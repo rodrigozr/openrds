@@ -1,0 +1,231 @@
+<?xml version="1.0"?>
+<!--
+	Build file for OpenRDS.
+	
+	$Revision: 1.14 $
+	$Date: 2007/08/02 18:18:47 $ (of revision)
+	$Author: rodrigorosauro $ (of revision)
+-->
+<project name="OpenRDS" default="jar.full">
+	<!-- # ## ### OpenRDS version - Change this property for new releases. ### ## # -->
+	<property name="openrds.version"		value="1.2"/>
+	<!-- Input directories -->
+	<property name="dir.local.source"		value="../src/"/>
+	<property name="dir.junit.source"		value="../junits/"/>
+	<property name="dir.scripts"			value="../scripts/"/>
+	<property name="dir.docs"				value="../docs/"/>
+	<property name="dir.jni.w32"			value="../jni/bin/w32/"/>
+	<!-- Output directories and files -->
+	<property name="dir.output"				value="../build"/>
+	<property name="dir.output.jar"			value="${dir.output}/jar/"/>
+	<property name="dir.output.release"		value="${dir.output}/release/"/>
+	<property name="dir.output.tmp"			value="${dir.output}/tmp/"/>
+	<property name="dir.output.src"			value="${dir.output.tmp}/src/"/>
+	<property name="dir.output.bin"			value="${dir.output.tmp}/bin/"/>
+	<property name="dir.output.bin.debug"	value="${dir.output.tmp}/bin_debug/"/>
+	<property name="dir.output.junit"		value="${dir.output.tmp}/junit/"/>
+	<property name="dir.eclipse.bytecode"	value="../.bytecode/"/>
+	<property name="dir.javadoc"			value="../javadoc/"/>
+	<property name="dir.lib"				value="../lib/"/>
+	<property name="jar.file.name"			value="OpenRDS.jar"/>
+	<property name="jar.file.name.debug"	value="OpenRDS_debug.jar"/>
+	<property name="release.file.full"		value="${dir.output.release}/OpenRDS_${openrds.version}.zip"/>
+	<property name="release.file.src"		value="${dir.output.release}/OpenRDS-src.zip"/>
+	<property name="release.file.javadoc"	value="${dir.output.release}/javadoc_${openrds.version}.zip"/>
+	<property name="lib.junit"				value="${dir.lib}/junit.jar"/>
+	
+	<!-- Files to compile with "rmic" -->
+	<property name="rmic.classes"			value="net/sf/openrds/*.class"/>
+	<property name="rmic.exclusions"		value="net/sf/openrds/*Test*.class"/>
+	
+	<!--
+		TARGETS
+	-->
+	
+	<!-- Cleans up all output directories -->
+	<target name="internal::clean" description="private call">
+		<echo>Removing temporary output directories...</echo>
+		<delete dir="${dir.output.tmp}"/>
+		<echo>Temporary output directories have been removed successfuly !</echo>
+	</target>
+	<!-- Prepares all environment before building application -->
+	<target name="internal::prepare" depends="internal::clean" description="private call">
+		<echo>Preparing environment...</echo>
+		<mkdir dir="${dir.output}"/>
+		<mkdir dir="${dir.output.tmp}"/>
+		<mkdir dir="${dir.output.src}"/>
+		<mkdir dir="${dir.output.jar}"/>
+		<mkdir dir="${dir.output.bin}"/>
+		<mkdir dir="${dir.output.bin.debug}"/>
+		<mkdir dir="${dir.output.junit}"/>
+		<tstamp>
+			<format property="TIME" pattern="HH:mm:ss"/>
+		</tstamp>
+		<echo>Copying source...</echo>
+		<copy todir="${dir.output.src}">
+			<fileset dir="${dir.local.source}"/>
+			<filterset begintoken="[" endtoken="]">
+				<filter token="REPLACE_VERSION" value="${openrds.version}"/>
+				<filter token="REPLACE_DATE" value="${TODAY} ${TIME}"/>
+			</filterset>
+		</copy>
+		<echo>Environment has been prepared successfuly !</echo>
+	</target>
+	<!-- Compiles the source code -->
+	<target name="internal::compile" depends="internal::prepare" description="private call">
+		<echo>Compiling all source code at ${dir.output.src}...</echo>
+		<echo>Compiling release...</echo>
+		<javac 	srcdir="${dir.output.src}" 
+				debug="no"
+				optimize="yes"
+				destdir="${dir.output.bin}"
+				failonerror="true">
+		</javac>
+		<echo>Compiling debug...</echo>
+		<javac 	srcdir="${dir.output.src}" 
+				debug="yes"
+				optimize="no"
+				destdir="${dir.output.bin.debug}"
+				failonerror="true">
+		</javac>
+		<echo>All source has been compiled successfuly!</echo>
+	</target>
+	<!-- Compiles RMI stubs -->
+	<target name="internal::rmic" depends="internal::compile" description="private call">
+		<echo>Compiling RMI Stubs...</echo>
+		<echo>Compiling release stubs...</echo>
+		<rmic base="${dir.output.bin}" classpath="${dir.output.bin}" includes="${rmic.classes}" excludes="${rmic.exclusions}" debug="no" verify="yes"/>
+		<echo>Compiling debug stubs...</echo>
+		<rmic base="${dir.output.bin.debug}" classpath="${dir.output.bin.debug}" includes="${rmic.classes}" excludes="${rmic.exclusions}" debug="yes" verify="yes"/>
+		<echo>All stubs have been compiled successfuly!</echo>
+	</target>
+	<!-- Compiles JUNIT classes -->
+	<target name="internal::compile_junits" depends="internal::rmic" description="private call">
+		<echo>Compiling all junits at ${dir.junit.source}...</echo>
+		<javac 	srcdir="${dir.junit.source}" 
+				debug="yes"
+				optimize="no"
+				destdir="${dir.output.junit}"
+				classpath="${lib.junit}${path.separator}${dir.output.bin.debug}"
+				failonerror="true">
+		</javac>
+		<echo>All junits have been compiled successfuly!</echo>
+	</target>
+	<!--
+	 =====================================================================================================
+	 Default target.
+	 Compiles the full source-code, generating 2 JAR files... One with debug and one without.
+	 =====================================================================================================
+	 -->
+	<target name="jar.full" depends="internal::rmic" description="Creates the JAR file.">
+		<echo>Creating the jar files...</echo>
+		<echo>Creating release jar...</echo>
+		<jar jarfile="${dir.output.jar}/${jar.file.name}" basedir="${dir.output.bin}">
+			<manifest>
+				<attribute name="Product-Description"	value="OpenRDS"/>
+				<attribute name="Product-Version"		value="${openrds.version}"/>
+				<attribute name="Built-On"				value="${TODAY} ${TIME}"/>
+			</manifest>
+		</jar>
+		<echo>Creating debug jar...</echo>
+		<jar jarfile="${dir.output.jar}/${jar.file.name.debug}" basedir="${dir.output.bin.debug}">
+			<manifest>
+				<attribute name="Product-Description"	value="OpenRDS"/>
+				<attribute name="Product-Version"		value="${openrds.version}"/>
+				<attribute name="Built-On"				value="${TODAY} ${TIME}"/>
+			</manifest>
+		</jar>
+		<echo>Jar files have been created !</echo>
+		<antcall target="internal::clean"/>
+	</target>
+    <!--
+    =====================================================================================================
+    Javadoc target.
+    Generates Javadoc documentation.
+    =====================================================================================================
+    -->
+	<target name="javadoc" description="Generates Javadoc documentation">
+		<delete dir="${dir.javadoc}"/>
+        <javadoc	destdir="${dir.javadoc}"
+        			access="public"
+    				source="1.4"
+        			use="true"
+        			notree="false"
+        			nonavbar="false"
+    				noindex="false"
+        			splitindex="true"
+        			author="true"
+        			version="true"
+        			nodeprecatedlist="false"
+        			nodeprecated="false"
+        			packagenames="net.sf.openrds.*"
+        			sourcepath="${dir.local.source}"
+        			classpath="${dir.eclipse.bytecode}"
+        			doctitle="OpenRDS ${openrds.version} Javadoc"
+        			additionalparam="-J-Xmx180m -encoding UTF-8">
+        	<tag name="value" scope="all" description="Value:"/>
+    	</javadoc>
+    </target>
+    <!--
+    =====================================================================================================
+    Release target.
+    Generates all files for a new OpenRDS release.
+    =====================================================================================================
+    -->
+	<target name="release" description="Generates all files for a new OpenRDS release">
+		<!-- Creates release directory -->
+		<mkdir dir="${dir.output.release}"/>
+		<!-- Generates JAR files -->
+		<antcall target="jar.full"/>
+		<!-- Generates Javadoc -->
+		<antcall target="javadoc"/>
+		<!-- ZIP javadocs -->
+		<zip destfile="${release.file.javadoc}" basedir="${dir.javadoc}"/>
+		<!-- ZIP source-code -->
+		<zip destfile="${release.file.src}" basedir="${dir.local.source}"/>
+		
+		<!-- Generates release zip file -->
+		<zip destfile="${release.file.full}">
+			<fileset file="${dir.output.jar}/${jar.file.name}"/>
+			<fileset file="${dir.output.jar}/${jar.file.name.debug}"/>
+			<fileset file="${release.file.src}"/>
+			<fileset dir="${dir.docs}"		includes="*.txt"/>
+			<fileset dir="${dir.jni.w32}"	includes="*.dll"/>
+			<fileset dir="${dir.scripts}"	includes="*"/>
+		</zip>
+		
+		<!-- Removes temporary files -->
+		<delete dir="${dir.javadoc}"/>
+		<delete file="${release.file.src}"/>
+		<antcall target="internal::clean"/>
+	</target>
+    <!--
+    =====================================================================================================
+    Junit target.
+    Runs junit tests. - WARNING: junit.jar must be in classpath.
+    =====================================================================================================
+    -->
+	<target name="junit" depends="internal::compile_junits" description="Runs junit tests (will compile source if needed)">
+		<junit	printsummary="yes"
+				showoutput="true"
+				fork="on"
+				forkmode="once"
+				haltonfailure="true"
+				timeout="80000"
+				maxmemory="512m">
+			<classpath>
+		       	<pathelement location="${lib.junit}"/>
+               	<pathelement location="${dir.output.bin.debug}"/>
+		       	<pathelement location="${dir.output.junit}"/>
+			</classpath>
+			<test name="net.sf.openrds.AllTests"/>
+		</junit>
+		<antcall target="internal::clean"/>
+	</target>
+	<!-- Compiles RMI stubs in the eclipse IDE -->
+	<target name="eclipse.rmic" description="Compiles RMI stubs in the eclipse IDE">
+		<echo>Compiling RMI Stubs for eclipse...</echo>
+		<rmic base="${dir.eclipse.bytecode}" classpath="${dir.eclipse.bytecode}" includes="${rmic.classes}" excludes="${rmic.exclusions}" debug="yes" verify="yes"/>
+		<echo>All stubs have been compiled successfuly!</echo>
+	</target>
+</project>

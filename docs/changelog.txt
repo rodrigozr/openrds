@@ -1,0 +1,80 @@
+/**
+ * OpenRDS - Open Requisition Distribution System
+ * Copyright (c) 2006 Rodrigo Zechin Rosauro
+ * 
+ * This software program is free software; you can redistribute it and/or modify it under the
+ * terms of the GNU Lesser General Public License as published by the Free Software Foundation;
+ * either version 2.1 of the License, or (at your option) any later version.
+ * 
+ * This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ */
+
+Change-log for OpenRDS 1.1-beta
+
+Changes from version 1.0-beta
+-----------------------------
+
+* User guide documentation has been finally released with this version.
+* Improved load-balance algorithm for requisitions without any factor.
+
+Bug fixes:
+* [1558043] - Process node takes a long time to reconect after crash.
+* [1562880] - Node does not connect when IPv6 is enabled.
+* [1570257] - Dynamic class download: missing class results in error.
+
+New features:
+* [1558061] - Allow listeners to be added before registering node.
+* [1552054] - Implement automatic detection of clock and memory on linux.
+* [1552050] - Implement better generic process node.
+* [1552052] - Add support for automatic updates.
+
+API Changes:
+* Added class "net.sf.openrds.tools.Version" which holds version information on runtime.
+* Added class "net.sf.openrds.tools.ClusterNode" which is part of feature #[1552050].
+* Added class "net.sf.openrds.Requisition" (turned public).
+* Added method "NodeFactory.createProcessNode()", which is part of feature #[1558061].
+* Added method "NodeFactory.startMainNode()" without any parameter.
+* Added method "RegistryHandler.getInetAddress()", to retrieve the interface OpenRDS is using.
+
+Changes from version 0.4
+------------------------
+
+* First beta tests release of OpenRDS.
+* Fixed handling of "ProcessingException" when the process node was started on the same JVM of
+  the requisitor thread.
+* Added protection against "out-of-memory" errors that could kill main dispatcher thread.
+* Fully refactored the algorithm that determines the best node to process a requisition.
+ (Major changes of the refactor):
+  - Load balance has been finally fixed for requisitions that defines both clock and memory factors;
+  - Overall speed has been improved;
+  - Code for load balance has been reduced in about 30% (smaller class file);
+  - Algorithm now consider nodes' processing factor even if the requisition does not define any;
+  - Removed a busy wait when all nodes have exceeded their limits.
+* Many more junits have been added to ensure proper load-balance behaviour.
+
+Changes from version 0.3
+------------------------
+
+* Added Requisition.onBeforeProcess(IProcessNode) which is called just before each
+  requisition is processed. This method can be overriden to get information about
+  the node where it is beeing processed.
+* Added support for node event listeners. See INodeEventListener, NodeEventAdaptor
+  and INode.addNodeEventListener() for more details.
+* Added some junit tests to help ensuring correct functionality. More junits are
+  beeing created during development.
+
+Changes from version 0.2
+------------------------
+
+* TCP Sockets created by the application no more bind() to an expecific IP.
+* Added a new example class: CloseAll.java, which demonstrates how to close all process nodes.
+
+Changes from version 0.1
+------------------------
+
+* Fixed MainNode.finish() with pending requisitions.
+* Fixed communication problems when using more than one network interface.
+* Added IMainNode.waitIdle() - see javadoc for more details.
+* RegistryHandler.initialize() now throws IOException instead of RemoteException
