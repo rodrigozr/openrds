@@ -1,0 +1,1635 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 10 (filtered)">
+<title>OpenRDS User Guide</title>
+
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"MS Mincho";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+@font-face
+	{font-family:"\@MS Mincho";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:150%;
+	font-size:12.0pt;
+	font-family:Arial;}
+h1
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:12.0pt;
+	margin-left:17.0pt;
+	text-align:center;
+	text-indent:-17.0pt;
+	page-break-before:always;
+	page-break-after:avoid;
+	font-size:18.0pt;
+	font-family:Arial;
+	text-transform:uppercase;}
+h2
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:12.0pt;
+	margin-left:.4in;
+	text-align:center;
+	text-indent:-.4in;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:Arial;
+	font-style:italic;}
+h3
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.5in;
+	text-indent:-.5in;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:Arial;}
+h4
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:.6in;
+	text-align:justify;
+	text-indent:-.6in;
+	line-height:150%;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:Arial;}
+h5
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:.7in;
+	text-align:justify;
+	text-indent:-.7in;
+	line-height:150%;
+	font-size:13.0pt;
+	font-family:Arial;
+	font-style:italic;}
+h6
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:.8in;
+	text-align:justify;
+	text-indent:-.8in;
+	line-height:150%;
+	font-size:11.0pt;
+	font-family:Arial;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:.9in;
+	text-align:justify;
+	text-indent:-.9in;
+	line-height:150%;
+	font-size:12.0pt;
+	font-family:Arial;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:1.0in;
+	text-align:justify;
+	text-indent:-1.0in;
+	line-height:150%;
+	font-size:12.0pt;
+	font-family:Arial;
+	font-style:italic;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:1.1in;
+	text-align:justify;
+	text-indent:-1.1in;
+	line-height:150%;
+	font-size:11.0pt;
+	font-family:Arial;}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	text-transform:uppercase;
+	font-weight:bold;}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:12.0pt;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	font-variant:small-caps;}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:24.0pt;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	font-style:italic;}
+p.MsoToc4, li.MsoToc4, div.MsoToc4
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	line-height:150%;
+	font-size:9.0pt;
+	font-family:"Times New Roman";}
+p.MsoToc5, li.MsoToc5, div.MsoToc5
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:48.0pt;
+	margin-bottom:.0001pt;
+	line-height:150%;
+	font-size:9.0pt;
+	font-family:"Times New Roman";}
+p.MsoToc6, li.MsoToc6, div.MsoToc6
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:60.0pt;
+	margin-bottom:.0001pt;
+	line-height:150%;
+	font-size:9.0pt;
+	font-family:"Times New Roman";}
+p.MsoToc7, li.MsoToc7, div.MsoToc7
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:1.0in;
+	margin-bottom:.0001pt;
+	line-height:150%;
+	font-size:9.0pt;
+	font-family:"Times New Roman";}
+p.MsoToc8, li.MsoToc8, div.MsoToc8
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:84.0pt;
+	margin-bottom:.0001pt;
+	line-height:150%;
+	font-size:9.0pt;
+	font-family:"Times New Roman";}
+p.MsoToc9, li.MsoToc9, div.MsoToc9
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:96.0pt;
+	margin-bottom:.0001pt;
+	line-height:150%;
+	font-size:9.0pt;
+	font-family:"Times New Roman";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:150%;
+	font-size:12.0pt;
+	font-family:Arial;}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:150%;
+	font-size:12.0pt;
+	font-family:Arial;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+pre
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+tt
+	{font-family:"Courier New";}
+p.Noindextitle, li.Noindextitle, div.Noindextitle
+	{margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	line-height:150%;
+	font-size:18.0pt;
+	font-family:Arial;
+	font-weight:bold;}
+p.Text, li.Text, div.Text
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	text-align:justify;
+	text-indent:.4in;
+	line-height:150%;
+	font-size:11.0pt;
+	font-family:Arial;}
+p.Code, li.Code, div.Code
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	text-align:justify;
+	font-size:11.0pt;
+	font-family:"Courier New";}
+span.TextChar
+	{font-family:Arial;}
+span.CodeChar
+	{font-family:"Courier New";}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:70.85pt 85.05pt 70.85pt 85.05pt;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link=blue vlink=purple>
+
+<div class=Section1>
+
+<p class=Noindextitle><span style='line-height:150%'>OpenRDS – Open Requisition
+Distribution System</span></p>
+
+<p class=Noindextitle>User Guide</p>
+
+<p class=MsoFooter align=center style='margin-right:.25in;text-align:center'><span
+style='font-size:8.0pt;line-height:150%;color:silver'>Document version: 1.0 –
+Last change: </span><span
+style='font-size:8.0pt;line-height:150%;color:silver'>2006/10/04 16:46</span></p>
+
+<p class=Text>&nbsp;</p>
+
+<p class=MsoToc1><span
+class=MsoHyperlink><span lang=PT-BR><a href="#_Toc147743735"><span lang=EN-US>1</span><span
+lang=EN-US style='font-size:12.0pt;color:windowtext;text-transform:none;
+font-weight:normal;text-decoration:none'>      </span><span lang=EN-US>Getting
+started</span><span style='color:windowtext;display:none;text-decoration:none'>_ </span><span
+style='color:windowtext;display:none;text-decoration:none'>2</span></a></span></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><span lang=PT-BR style='font-variant:
+normal !important;text-transform:uppercase'><a href="#_Toc147743736"><span
+lang=EN-US>1.1</span><span lang=EN-US style='font-size:12.0pt;color:windowtext;
+text-transform:none;text-decoration:none'>        </span><span lang=EN-US>What
+is OpenRDS?</span><span style='color:windowtext;display:none;text-decoration:
+none'> </span><span
+style='color:windowtext;display:none;text-decoration:none'>2</span></a></span></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><span lang=PT-BR style='font-variant:
+normal !important;text-transform:uppercase'><a href="#_Toc147743737"><span
+lang=EN-US>1.2</span><span lang=EN-US style='font-size:12.0pt;color:windowtext;
+text-transform:none;text-decoration:none'>        </span><span lang=EN-US>Requirements</span><span
+style='color:windowtext;display:none;text-decoration:none'>_ </span><span
+style='color:windowtext;display:none;text-decoration:none'>2</span></a></span></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><span lang=PT-BR style='font-variant:
+normal !important;text-transform:uppercase'><a href="#_Toc147743738"><span
+lang=EN-US>1.3</span><span lang=EN-US style='font-size:12.0pt;color:windowtext;
+text-transform:none;text-decoration:none'>        </span><span lang=EN-US>Running
+a “hello world”</span><span style='color:windowtext;display:none;text-decoration:
+none'> </span><span
+style='color:windowtext;display:none;text-decoration:none'>2</span></a></span></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><span lang=PT-BR style='font-variant:
+normal !important;text-transform:uppercase'><a href="#_Toc147743739"><span
+lang=EN-US>1.4</span><span lang=EN-US style='font-size:12.0pt;color:windowtext;
+text-transform:none;text-decoration:none'>        </span><span lang=EN-US>Running
+a sample parallelism performance test</span><span style='color:windowtext;
+display:none;text-decoration:none'>_ </span><span
+style='color:windowtext;display:none;text-decoration:none'>3</span></a></span></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><span lang=PT-BR style='font-variant:
+normal !important;text-transform:uppercase'><a href="#_Toc147743740"><span
+lang=EN-US>1.5</span><span lang=EN-US style='font-size:12.0pt;color:windowtext;
+text-transform:none;text-decoration:none'>        </span><span lang=EN-US>Understanding
+how OpenRDS works</span><span style='color:windowtext;display:none;text-decoration:
+none'>_ </span><span
+style='color:windowtext;display:none;text-decoration:none'>5</span></a></span></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><span lang=PT-BR style='font-variant:
+normal !important;text-transform:uppercase'><a href="#_Toc147743741"><span
+lang=EN-US>1.6</span><span lang=EN-US style='font-size:12.0pt;color:windowtext;
+text-transform:none;text-decoration:none'>        </span><span lang=EN-US>Using
+OpenRDS with an existing application</span><span style='color:windowtext;
+display:none;text-decoration:none'>_ </span><span
+style='color:windowtext;display:none;text-decoration:none'>6</span></a></span></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><span lang=PT-BR style='font-variant:
+normal !important;text-transform:uppercase'><a href="#_Toc147743742"><span
+lang=EN-US>1.7</span><span lang=EN-US style='font-size:12.0pt;color:windowtext;
+text-transform:none;text-decoration:none'>        </span><span lang=EN-US>The
+“Cluster Node” tool</span><span style='color:windowtext;display:none;
+text-decoration:none'>_ </span><span
+style='color:windowtext;display:none;text-decoration:none'>10</span></a></span></span></p>
+
+<p class=MsoToc3><span class=MsoHyperlink><span lang=PT-BR><a
+href="#_Toc147743743"><span lang=EN-US>1.7.1</span><span lang=EN-US
+style='font-size:12.0pt;color:windowtext;font-style:normal;text-decoration:
+none'>     </span><span lang=EN-US>Installation</span><span style='color:windowtext;
+display:none;text-decoration:none'>_ </span><span
+style='color:windowtext;display:none;text-decoration:none'>10</span></a></span></span></p>
+
+<p class=MsoToc3><span class=MsoHyperlink><span lang=PT-BR><a
+href="#_Toc147743744"><span lang=EN-US>1.7.2</span><span lang=EN-US
+style='font-size:12.0pt;color:windowtext;font-style:normal;text-decoration:
+none'>     </span><span lang=EN-US>Initialization scripts</span><span
+style='color:windowtext;display:none;text-decoration:none'> </span><span
+style='color:windowtext;display:none;text-decoration:none'>12</span></a></span></span></p>
+
+<p class=MsoToc3><span class=MsoHyperlink><span lang=PT-BR><a
+href="#_Toc147743745"><span lang=EN-US>1.7.3</span><span lang=EN-US
+style='font-size:12.0pt;color:windowtext;font-style:normal;text-decoration:
+none'>     </span><span lang=EN-US>Configuration</span><span style='color:windowtext;
+display:none;text-decoration:none'>_ </span><span
+style='color:windowtext;display:none;text-decoration:none'>12</span></a></span></span></p>
+
+<p class=MsoToc3><span class=MsoHyperlink><span lang=PT-BR><a
+href="#_Toc147743746"><span lang=EN-US>1.7.4</span><span lang=EN-US
+style='font-size:12.0pt;color:windowtext;font-style:normal;text-decoration:
+none'>     </span><span lang=EN-US>Web update</span><span style='color:windowtext;
+display:none;text-decoration:none'> </span><span
+style='color:windowtext;display:none;text-decoration:none'>13</span></a></span></span></p>
+
+<p class=MsoToc1><span class=MsoHyperlink><span lang=PT-BR><a
+href="#_Toc147743747"><span lang=EN-US>2</span><span lang=EN-US
+style='font-size:12.0pt;color:windowtext;text-transform:none;font-weight:normal;
+text-decoration:none'>      </span><span lang=EN-US>OpenRDS in action</span><span
+style='color:windowtext;display:none;text-decoration:none'>_ </span><span
+style='color:windowtext;display:none;text-decoration:none'>14</span></a></span></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><span lang=PT-BR style='font-variant:
+normal !important;text-transform:uppercase'><a href="#_Toc147743748"><span
+lang=EN-US>2.1</span><span lang=EN-US style='font-size:12.0pt;color:windowtext;
+text-transform:none;text-decoration:none'>        </span><span lang=EN-US>Working
+with clock and memory factors</span><span style='color:windowtext;display:none;
+text-decoration:none'>_ </span><span
+style='color:windowtext;display:none;text-decoration:none'>14</span></a></span></span></p>
+
+<p class=MsoToc3><span class=MsoHyperlink><span lang=PT-BR><a
+href="#_Toc147743749"><span lang=EN-US>2.1.1</span><span lang=EN-US
+style='font-size:12.0pt;color:windowtext;font-style:normal;text-decoration:
+none'>     </span><span lang=EN-US>Node factors</span><span style='color:windowtext;
+display:none;text-decoration:none'> </span><span
+style='color:windowtext;display:none;text-decoration:none'>14</span></a></span></span></p>
+
+<p class=MsoToc3><span class=MsoHyperlink><span lang=PT-BR><a
+href="#_Toc147743750"><span lang=EN-US>2.1.2</span><span lang=EN-US
+style='font-size:12.0pt;color:windowtext;font-style:normal;text-decoration:
+none'>     </span><span lang=EN-US>Requisition factors</span><span
+style='color:windowtext;display:none;text-decoration:none'> </span><span
+style='color:windowtext;display:none;text-decoration:none'>14</span></a></span></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><span lang=PT-BR style='font-variant:
+normal !important;text-transform:uppercase'><a href="#_Toc147743751"><span
+lang=EN-US>2.2</span><span lang=EN-US style='font-size:12.0pt;color:windowtext;
+text-transform:none;text-decoration:none'>        </span><span lang=EN-US>Dealing
+with common issues</span><span style='color:windowtext;display:none;text-decoration:
+none'>_ </span><span
+style='color:windowtext;display:none;text-decoration:none'>17</span></a></span></span></p>
+
+<p class=MsoToc3><span class=MsoHyperlink><span lang=PT-BR><a
+href="#_Toc147743752"><span lang=EN-US>2.2.1</span><span lang=EN-US
+style='font-size:12.0pt;color:windowtext;font-style:normal;text-decoration:
+none'>     </span><span lang=EN-US>Class loading</span><span style='color:windowtext;
+display:none;text-decoration:none'>_ </span><span
+style='color:windowtext;display:none;text-decoration:none'>17</span></a></span></span></p>
+
+<p class=MsoToc3><span class=MsoHyperlink><span lang=PT-BR><a
+href="#_Toc147743753"><span lang=EN-US>2.2.2</span><span lang=EN-US
+style='font-size:12.0pt;color:windowtext;font-style:normal;text-decoration:
+none'>     </span><span lang=EN-US>Static initialization</span><span
+style='color:windowtext;display:none;text-decoration:none'>_ </span><span
+style='color:windowtext;display:none;text-decoration:none'>18</span></a></span></span></p>
+
+<p class=MsoToc3><span class=MsoHyperlink><span lang=PT-BR><a
+href="#_Toc147743754"><span lang=EN-US>2.2.3</span><span lang=EN-US
+style='font-size:12.0pt;color:windowtext;font-style:normal;text-decoration:
+none'>     </span><span lang=EN-US>Singletons</span><span style='color:windowtext;
+display:none;text-decoration:none'> </span><span
+style='color:windowtext;display:none;text-decoration:none'>18</span></a></span></span></p>
+
+<p class=MsoToc3><span class=MsoHyperlink><span lang=PT-BR><a
+href="#_Toc147743755"><span lang=EN-US>2.2.4</span><span lang=EN-US
+style='font-size:12.0pt;color:windowtext;font-style:normal;text-decoration:
+none'>     </span><span lang=EN-US>Threads</span><span style='color:windowtext;
+display:none;text-decoration:none'> </span><span
+style='color:windowtext;display:none;text-decoration:none'>18</span></a></span></span></p>
+
+<p class=MsoToc3><span class=MsoHyperlink><span lang=PT-BR><a
+href="#_Toc147743756"><span lang=EN-US>2.2.5</span><span lang=EN-US
+style='font-size:12.0pt;color:windowtext;font-style:normal;text-decoration:
+none'>     </span><span lang=EN-US>Data access</span><span style='color:windowtext;
+display:none;text-decoration:none'> </span><span
+style='color:windowtext;display:none;text-decoration:none'>19</span></a></span></span></p>
+
+<p class=MsoToc3><span class=MsoHyperlink><span lang=PT-BR><a
+href="#_Toc147743757"><span lang=EN-US>2.2.6</span><span lang=EN-US
+style='font-size:12.0pt;color:windowtext;font-style:normal;text-decoration:
+none'>     </span><span lang=EN-US>Host operating system</span><span
+style='color:windowtext;display:none;text-decoration:none'>_ </span><span
+style='color:windowtext;display:none;text-decoration:none'>19</span></a></span></span></p>
+
+<p class=MsoToc3><span class=MsoHyperlink><span lang=PT-BR><a
+href="#_Toc147743758"><span lang=EN-US>2.2.7</span><span lang=EN-US
+style='font-size:12.0pt;color:windowtext;font-style:normal;text-decoration:
+none'>     </span><span lang=EN-US>JNI</span><span style='color:windowtext;
+display:none;text-decoration:none'> </span><span
+style='color:windowtext;display:none;text-decoration:none'>19</span></a></span></span></p>
+
+<p class=MsoToc3><span class=MsoHyperlink><span lang=PT-BR><a
+href="#_Toc147743759"><span lang=EN-US>2.2.8</span><span lang=EN-US
+style='font-size:12.0pt;color:windowtext;font-style:normal;text-decoration:
+none'>     </span><span lang=EN-US>Inner classes</span><span style='color:windowtext;
+display:none;text-decoration:none'> </span><span
+style='color:windowtext;display:none;text-decoration:none'>19</span></a></span></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><span lang=PT-BR style='font-variant:
+normal !important;text-transform:uppercase'><a href="#_Toc147743760"><span
+lang=EN-US>2.3</span><span lang=EN-US style='font-size:12.0pt;color:windowtext;
+text-transform:none;text-decoration:none'>        </span><span lang=EN-US>Dynamic
+class download</span><span style='color:windowtext;display:none;text-decoration:
+none'>_ </span><span
+style='color:windowtext;display:none;text-decoration:none'>20</span></a></span></span></p>
+
+<p class=MsoToc3><span class=MsoHyperlink><span lang=PT-BR><a
+href="#_Toc147743761"><span lang=EN-US>2.3.1</span><span lang=EN-US
+style='font-size:12.0pt;color:windowtext;font-style:normal;text-decoration:
+none'>     </span><span lang=EN-US>Understanding how it works</span><span
+style='color:windowtext;display:none;text-decoration:none'> </span><span
+style='color:windowtext;display:none;text-decoration:none'>20</span></a></span></span></p>
+
+<p class=MsoToc3><span class=MsoHyperlink><span lang=PT-BR><a
+href="#_Toc147743762"><span lang=EN-US>2.3.2</span><span lang=EN-US
+style='font-size:12.0pt;color:windowtext;font-style:normal;text-decoration:
+none'>     </span><span lang=EN-US>Advantages and disadvantages</span><span
+style='color:windowtext;display:none;text-decoration:none'> </span><span
+style='color:windowtext;display:none;text-decoration:none'>21</span></a></span></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><span lang=PT-BR style='font-variant:
+normal !important;text-transform:uppercase'><a href="#_Toc147743763"><span
+lang=EN-US>2.4</span><span lang=EN-US style='font-size:12.0pt;color:windowtext;
+text-transform:none;text-decoration:none'>        </span><span lang=EN-US>Working
+with databases</span><span style='color:windowtext;display:none;text-decoration:
+none'>_ </span><span
+style='color:windowtext;display:none;text-decoration:none'>21</span></a></span></span></p>
+
+<p class=MsoToc3><span class=MsoHyperlink><span lang=PT-BR><a
+href="#_Toc147743764"><span lang=EN-US>2.4.1</span><span lang=EN-US
+style='font-size:12.0pt;color:windowtext;font-style:normal;text-decoration:
+none'>     </span><span lang=EN-US>Overview</span><span style='color:windowtext;
+display:none;text-decoration:none'>_ </span><span
+style='color:windowtext;display:none;text-decoration:none'>22</span></a></span></span></p>
+
+<p class=MsoToc3><span class=MsoHyperlink><span lang=PT-BR><a
+href="#_Toc147743765"><span lang=EN-US>2.4.2</span><span lang=EN-US
+style='font-size:12.0pt;color:windowtext;font-style:normal;text-decoration:
+none'>     </span><span lang=EN-US>Connecting to a database</span><span
+style='color:windowtext;display:none;text-decoration:none'> </span><span
+style='color:windowtext;display:none;text-decoration:none'>22</span></a></span></span></p>
+
+<p class=MsoToc1><span class=MsoHyperlink><span lang=PT-BR><a
+href="#_Toc147743766"><span lang=EN-US>3</span><span lang=EN-US
+style='font-size:12.0pt;color:windowtext;text-transform:none;font-weight:normal;
+text-decoration:none'>      </span><span lang=EN-US>Getting and using the
+source-code</span><span style='color:windowtext;display:none;text-decoration:
+none'>_ </span><span
+style='color:windowtext;display:none;text-decoration:none'>23</span></a></span></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><span lang=PT-BR style='font-variant:
+normal !important;text-transform:uppercase'><a href="#_Toc147743767"><span
+lang=EN-US>3.1</span><span lang=EN-US style='font-size:12.0pt;color:windowtext;
+text-transform:none;text-decoration:none'>        </span><span lang=EN-US>Downloading
+the full source</span><span style='color:windowtext;display:none;text-decoration:
+none'>_ </span><span
+style='color:windowtext;display:none;text-decoration:none'>23</span></a></span></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><span lang=PT-BR style='font-variant:
+normal !important;text-transform:uppercase'><a href="#_Toc147743768"><span
+lang=EN-US>3.2</span><span lang=EN-US style='font-size:12.0pt;color:windowtext;
+text-transform:none;text-decoration:none'>        </span><span lang=EN-US>Compiling
+OpenRDS</span><span style='color:windowtext;display:none;text-decoration:none'>_ </span><span
+style='color:windowtext;display:none;text-decoration:none'>23</span></a></span></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><span lang=PT-BR style='font-variant:
+normal !important;text-transform:uppercase'><a href="#_Toc147743769"><span
+lang=EN-US>3.3</span><span lang=EN-US style='font-size:12.0pt;color:windowtext;
+text-transform:none;text-decoration:none'>        </span><span lang=EN-US>Compiling
+JNI code</span><span style='color:windowtext;display:none;text-decoration:none'>_ </span><span
+style='color:windowtext;display:none;text-decoration:none'>24</span></a></span></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><span lang=PT-BR style='font-variant:
+normal !important;text-transform:uppercase'><a href="#_Toc147743770"><span
+lang=EN-US>3.4</span><span lang=EN-US style='font-size:12.0pt;color:windowtext;
+text-transform:none;text-decoration:none'>        </span><span lang=EN-US>Running
+the tests</span><span style='color:windowtext;display:none;text-decoration:
+none'>_ </span><span
+style='color:windowtext;display:none;text-decoration:none'>24</span></a></span></span></p>
+
+<p class=MsoToc1><span class=MsoHyperlink><span lang=PT-BR><a
+href="#_Toc147743771"><span lang=EN-US>4</span><span lang=EN-US
+style='font-size:12.0pt;color:windowtext;text-transform:none;font-weight:normal;
+text-decoration:none'>      </span><span lang=EN-US>About</span><span
+style='color:windowtext;display:none;text-decoration:none'>_ </span><span
+style='color:windowtext;display:none;text-decoration:none'>25</span></a></span></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><span lang=PT-BR style='font-variant:
+normal !important;text-transform:uppercase'><a href="#_Toc147743772"><span
+lang=EN-US>4.1</span><span lang=EN-US style='font-size:12.0pt;color:windowtext;
+text-transform:none;text-decoration:none'>        </span><span lang=EN-US>How
+did the project start?</span><span style='color:windowtext;display:none;
+text-decoration:none'> </span><span
+style='color:windowtext;display:none;text-decoration:none'>25</span></a></span></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><span lang=PT-BR style='font-variant:
+normal !important;text-transform:uppercase'><a href="#_Toc147743773"><span
+lang=EN-US>4.2</span><span lang=EN-US style='font-size:12.0pt;color:windowtext;
+text-transform:none;text-decoration:none'>        </span><span lang=EN-US>Who
+maintains OpenRDS project?</span><span style='color:windowtext;display:none;
+text-decoration:none'> </span><span
+style='color:windowtext;display:none;text-decoration:none'>25</span></a></span></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><span lang=PT-BR style='font-variant:
+normal !important;text-transform:uppercase'><a href="#_Toc147743774"><span
+lang=EN-US>4.3</span><span lang=EN-US style='font-size:12.0pt;color:windowtext;
+text-transform:none;text-decoration:none'>        </span><span lang=EN-US>How
+can I contribute?</span><span style='color:windowtext;display:none;text-decoration:
+none'> </span><span
+style='color:windowtext;display:none;text-decoration:none'>25</span></a></span></span></p>
+
+<p class=Text>&nbsp;</p>
+
+<p class=Text>&nbsp;</p>
+
+<h1><a name="_Toc147743735">1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Getting started</a></h1>
+
+<p class=Text>This chapter explains the basic concepts of OpenRDS and leads you
+through examples that will surely make you get anxious to start using this
+framework.</p>
+
+<h2><a name="_Toc147743736">1.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>What is OpenRDS?</a></h2>
+
+<p class=Text>OpenRDS is a Java framework that helps you to build distributed
+systems and clusters with the lowest possible effort using requisition-based
+communication. The name stands for “Open Requisition Distribution System”,
+which greatly expresses what this framework does.</p>
+
+<p class=Text>The main purpose of this project is to be extremely simple to use
+yet extensible enough to cover more complex scenarios.</p>
+
+<p class=Text>Using OpenRDS you can take advantage of idle processing capacity
+of your network to increase the throughput of your main application(s) or reduce
+the time to process a requisition using parallelism techniques.</p>
+
+<h2><a name="_Toc147743737"></a><a name="_Running_a_“hello"></a>1.2<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Requirements</h2>
+
+<p class=Text>OpenRDS works on virtually any operating system with J2SE 1.4 or
+higher, but has been currently tested only on Windows 98, 2000, XP and on some
+KNOPPIX Linux distributions with kernel versions 2.4 and 2.6.</p>
+
+<h2><a name="_Toc147743738">1.3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Running a “hello world”</a></h2>
+
+<p class=Text>The first step of learning how to use any new library is always a
+“hello world”, so this is probably the best way to demonstrate OpenRDS usage
+too.</p>
+
+<p class=Text>Firstly, download the latest OpenRDS release and extract the zip
+contents to a folder. Since we are going to demonstrate the “hello world”
+running in 3 separated processes, you will need to open <b>three</b> console
+windows (or shell terminals) and change to the directory where OpenRDS was
+extracted to, by typing the command “<span class=CodeChar><b>cd c:\path_to_openrds</b></span>“
+(Windows) or “<span class=CodeChar><b>cd /path_to_openrds</b></span>“ (Linux) -
+don’t forget to do that on the three terminals.</p>
+
+<p class=Text>After that, type the following command on <b>terminal #1</b>:</p>
+
+<p class=Code><b>java -cp OpenRDS.jar net.sf.openrds.examples.GenericMainNode</b></p>
+
+<p class=Text>(Don’t forget that if your java executable is not on the PATH,
+you will need to include the full path to it).</p>
+
+<p class=Text>You should see the following message: “<span class=CodeChar>Main
+node active</span>”, indicating that the main node was successfully started.</p>
+
+<p class=Text>Congratulations, you have started your first “Main Node”. Don’t
+worry about understanding what a “Main Node” is, this will be explained on the
+topic <a href="#_Understanding_how_OpenRDS">[Understanding how OpenRDS works]</a>.
+Note that you can press “CTRL+C” at any time to abruptly close the java process
+and stop the application, but you can also press the key ‘q’ and press [enter]
+to close the application normally.</p>
+
+<p class=Text>Now type the following command on <b>terminal #2</b>:</p>
+
+<p class=Code><b>java -cp OpenRDS.jar
+net.sf.openrds.examples.GenericProcessNode</b></p>
+
+<p class=Text>See that the message “<span class=CodeChar>Process node active</span>”
+is displayed and also take a look on the terminal #1; you should see a message
+like this: “<span class=CodeChar>Node registered: (node id)</span>”, indicating
+that the main node was successfully contacted by this process node.</p>
+
+<p class=Text>Now type the following command on <b>terminal #3</b>:</p>
+
+<p class=Code><b>java -cp OpenRDS.jar net.sf.openrds.examples.HelloWorld</b></p>
+
+<p class=Text>You should see the following message: “<span class=CodeChar>Hello
+from process node</span>”. This means that your system has successfully
+processed a requisition, and this requisition passed among the three different
+processes. The terminal #2 should also display the message: “<span
+class=CodeChar>Hello world from client</span>”.</p>
+
+<p class=Text>This finishes the hello world example, but I guess this is not
+enough exciting for you. You surely want to see the system performing something
+smarter than a distributed “hello world”, so keep these 3 terminals open and
+follow to the next topic: “Running a sample parallelism performance test”,
+which will probably be much more interesting and will give you a better idea of
+the overall functionality.</p>
+
+<h2><a name="_Toc147743739"></a><a name="_Running_a_sample"></a>1.4<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Running a sample parallelism performance test</h2>
+
+<p class=Text>This topic describes how to test the performance improvement
+using OpenRDS on multiple machines by distributing a sample requisition over
+all nodes in the network. This requisition computes prime numbers between 1 and
+60000, but note that it has been intentionally coded using the dumbest possible
+algorithm in order to be very heavy.</p>
+
+<p class=Text>Before we start the test, follow all steps described on the last
+topic <a href="#_Running_a_“hello">[Running a “hello world”]</a> (if you
+haven’t already), and keep all the terminals open. Also, be sure that you have
+only one IP configured and only one network interface. If you have more than
+one IP and/or network interface, you will need to set a java system property
+called “<span class=CodeChar><b>openrds.base.ip</b></span>” with the IP address
+of your local network. To do that, you must add the following argument after
+each “java” command:</p>
+
+<p class=Text>“<span class=CodeChar><b>-Dopenrds.base.ip=192.168.0.1</b></span>”
+(where 192.168.0.1 is the desired IP)</p>
+
+<p class=Code>E.g.: <b>java <span class=CodeChar>-Dopenrds.base.ip=192.168.0.1 </span>-cp
+OpenRDS.jar ...</b></p>
+
+<p class=Text>Okay, after running the “hello world” you should have 3
+terminals, where the #1 is running a “Main Node”, the #2 is running a “Process
+Node” and the #3 is idle.</p>
+
+<p class=Text>To run the sample requisition, type the following command on <b>terminal
+#3</b>:</p>
+
+<p class=Code><b>java -cp OpenRDS.jar net.sf.openrds.examples.PrimeNumber</b></p>
+
+<p class=Text>You should see the message “<span class=CodeChar>Starting test!</span>”
+that indicates the test is running. Some “dots” should now be printed on
+terminal #2 (the sample requisition print those dots so that you can be sure
+the test is running). After some time you will see 2 messages like this on
+terminal #3:</p>
+
+<p class=Code>Found 6057 prime numbers...</p>
+
+<p class=Code>Total time: 43328 milliseconds. </p>
+
+<p class=Text>The second line indicates how much time the requisition took to
+be processed (about 43 seconds on my machine), write down that number, so that
+you can compare with the next results.</p>
+
+<p class=Text>Okay, we have processed a more complex requisition in one
+machine, but that is not so exciting… We want to see real parallelism in
+action, so go to another computer and open a terminal on that computer,
+changing to OpenRDS directory as previously described and type the following
+command:</p>
+
+<p class=Code><b>java -cp OpenRDS.jar
+net.sf.openrds.examples.GenericProcessNode 192.168.0.1</b></p>
+
+<p class=Text><a name="_Understanding_how_OpenRDS"></a>Note that this a single command
+and it contains the IP 192.168.0.1 at the end. Change this to the IP of the other
+machine (where the main node is running).</p>
+
+<p class=Text>You should see the following message: “<span class=CodeChar>Process
+node active</span>”, which means that you now have 2 process nodes. To be sure
+that the node successfully connected to the other machine, look on the terminal
+#1 for another “<span class=CodeChar>Node registered: (node id)</span>”
+message. That message is displayed every time a process node connects to the
+system.</p>
+
+<p class=Text>Now go back to terminal #3 (which is idle), and type the
+following command again:</p>
+
+<p class=Code><b>java -cp OpenRDS.jar net.sf.openrds.examples.PrimeNumber</b></p>
+
+<p class=Text>Just like the last time, you will see two messages like this
+after some time:</p>
+
+<p class=Code>Found 6057 prime numbers...</p>
+
+<p class=Code>Total time: 18516 milliseconds.</p>
+
+<p class=Text>Compare the “Total time” with the last result, it should be
+considerably lower, which means that the system successfully processed the same
+requisition in 2 different machines at the same time, what gives a great
+performance improvement.</p>
+
+<p class=Text>Start more process nodes on more machines and check the
+performance improvement. You can now try different things, such as starting a
+process node while the test requisition is already being processed (this node
+will immediately start to help processing it) or closing a process node while
+the test is running (the system will automatically redistribute the
+requisitions and this wont affect the final result). Just note that the test
+will FAIL if there are no process nodes available, since the main node itself
+does not process a requisition.</p>
+
+<p class=Text>I hope that these examples were enough to give you at least a superficial
+overview of the framework potential.</p>
+
+<h2><a name="_Toc147743740">1.5<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Understanding how OpenRDS works</a></h2>
+
+<p class=Text>The system architecture consists basically in 2 different major modules:
+the “Main Node” and the “Process Node”.</p>
+
+<p class=Text>The main node is the “master” of the system; it is responsible
+for controlling all process nodes, distributing the requisitions to them and
+controlling load-balancing. Since all requisitions must be sent to the main
+node, it is a good idea to start it on the same JVM of your application (this
+way you ensure that it is always running), but this is not mandatory for the
+system to work (as seen in the “hello world” example, the main node was on a
+completely separated process).</p>
+
+<p class=Text>A process node is just a slave responsible for processing
+requisitions sent by the main node and returning the result, it doesn’t do much
+more than that, but the more process nodes you start on your network, more
+processing power and better results you will get.</p>
+
+<p class=Text>Since the main node cannot process a requisition, client
+applications often start both the main node and a process node on their application’s
+JVM, what ensures that at least one node will be always available.</p>
+
+<p class=Text>OpenRDS uses the Java RMI for communication, but that is
+completely transparent to the client system. If your application already uses
+RMI you can still use OpenRDS, with the sole constraint that the main node and
+the process nodes must be not started in the same virtual machine of your
+application (just like we did in the “hello world” example).</p>
+
+<p class=Text>After starting the nodes, the client application just have to
+create requisitions and pass them to the main node to be processed. The
+requisitions are somewhat similar to the well known “<span class=CodeChar>Runnable</span>”
+java interface, where you must implement a method that contains the code to be
+executed.</p>
+
+<p class=Text>There are two distinct types of requisitions: “Indivisible
+Requisitions” and “Divisible Requisitions”. The first one is the simplest one,
+which does not use parallelism techniques. This type of requisition is used to
+greatly improve your application’s throughput, allowing more requisitions to be
+processed at the same time.</p>
+
+<p class=Text>The second type of requisition, the “Divisible Requisition” is
+used when your code can be divided into many “Sub-requisitions” to be processed
+at the same time in parallel. This type of requisition is used to decrease the
+time necessary to process a single request and also to increase the
+application’s throughput. This type of requisition was used to create the
+example on the topic <a href="#_Running_a_sample">[Running a sample parallelism
+performance test]</a>.</p>
+
+<h2><a name="_Toc147743741">1.6<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Using OpenRDS with an existing application</a></h2>
+
+<p class=Text>Now that you know the basic concepts of OpenRDS, you must be
+asking yourself how to use it on your application, and I think that the best
+way to learn that is thought practical examples.</p>
+
+<p class=Text>Let’s start with code necessary to start a main node and a
+process node from your client application. You just have to import “<span
+class=CodeChar><b>net.sf.openrds.*</b></span>” and add the following code on
+your application startup:</p>
+
+<p class=Code align=center style='text-align:center'><img width=593 height=140
+src="userguide_files/image001.gif" alt="Code&#13;&#10;"></p>
+
+<p class=Text>As you can see, it’s very easy to startup OpenRDS nodes. This
+code starts a main node and then starts a process node that will connect to the
+local host. The second parameter of the method “<span class=CodeChar>startProcessNode</span>”
+tells the factory to test the connection with the main node during
+initialization.</p>
+
+<p class=Text>Now, to illustrate a real problem, let’s imagine that your
+application runs on a server and is responsible to convert documents from one
+format to another. But this task is very heavy and you want to improve it. Then
+you will have a method like this somewhere in your code:</p>
+
+<p class=Code align=center style='text-align:center'><img width=593 height=197
+src="userguide_files/image002.gif" alt="Code&#13;&#10;&#13;&#10;"></p>
+
+<p class=Text>Since the conversion of the pages is very heavy, you want to send
+this task to OpenRDS nodes, so that you will be able to convert many more
+documents at the same time. In order to do that, you just have to change your
+code to the following:</p>
+
+<p class=Code align=center style='text-align:center'><img width=593 height=433
+src="userguide_files/image003.gif" alt="Code&#13;&#10;&#13;&#10;"></p>
+
+<p class=Text>We just had to wrap the code that calls “<span class=CodeChar><b>convertPage()</b></span>”
+in an “<span class=CodeChar><b>IndivisibleRequisition</b></span>” and send it
+to the main node to handle it. It’s as simple as that. The only requirement is
+that both the “<span class=CodeChar>Page</span>” and the “<span class=CodeChar>ConvertedPage</span>”
+objects must implement the “<span class=CodeChar>Serializable</span>”
+interface, since it will be transferred over the network.</p>
+
+<p class=Text>Well, this small modification gives you a great improvement when
+your system receives many requests to convert documents at the same time, but
+this won’t help you to increase the conversion speed of a single document. Your
+clients would be much happier if the system could convert documents faster when
+it is not being heavily used.</p>
+
+<p class=Text>Since we convert the document page-by-page, we just have to
+create one requisition for each page and then put all the converted pages
+together. Well, this is not very hard to implement in your code… but it is even
+easier to implement using a “<span class=CodeChar><b>DivisibleRequisition</b></span>”,
+so take a look:</p>
+
+<p class=Code align=center style='text-align:center'><img width=593 height=592
+src="userguide_files/image004.gif" alt="Code&#13;&#10;&#13;&#10;"></p>
+
+<p class=Text>The “<span class=CodeChar>DivisibleRequisition</span>” has a method
+called “<span class=CodeChar><b>getSubRequisitions</b></span>”, which is called
+by OpenRDS to retrieve an array of sub-requisitions which will be processed in
+parallel. When all requisitions have finished processing, the method “<span
+class=CodeChar><b>getResponse</b></span>” is called to put all the results
+together. The array of objects received is the concatenation of all
+sub-requisitions’ results in the same order that the sub-requisitions where
+returned by the method “<span class=CodeChar>getSubRequisitions</span>”. Since
+our expected final result is the exact concatenation of all converted pages we
+don’t need to do anything, so we just return the received array of sub-results.</p>
+
+<p class=Text>As you can see, the code got a little bigger but it is still very
+simple considering the great performance improvement that you will deliver to
+your clients, and they will surely be much happier because they will convert
+documents much faster than before. Just start a good number of process nodes
+over your network and you will surely get amazing results.</p>
+
+<p class=Text>Of course that this is just a simple example, so the performance
+can be improved even more by using more advanced options of OpenRDS (such as
+requisition factors) and some other implementation techniques. Requisition
+factors are explained on the topic <a href="#_Working_with_clock">[Working with
+clock and memory factors]</a>.</p>
+
+<h2><a name="_Toc147743742">1.7<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>The “Cluster Node” tool</a></h2>
+
+<p class=Text>The first topics have taught you how to start a process node
+using the “Generic Process Node” or starting it inside your application’s JVM.
+But installing and managing process nodes can become time-consuming if you
+don’t have at least some automation to help you on that task</p>
+
+<p class=Text>Thinking always on simplicity, OpenRDS comes with a small
+application called “Cluster Node”, which has been designed to help on the
+installation, execution and administration of process nodes.</p>
+
+<p class=Text>This tool is just like a generic process node, but it includes other
+functionalities, such as an installation wizard, web update capability and an
+administration console where you can run commands such as “<span
+class=CodeChar>restart</span>”, “<span class=CodeChar>exit</span>”, “<span
+class=CodeChar>config</span>” and more.</p>
+
+<h3><a name="_Toc147743743">1.7.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Installation</a></h3>
+
+<p class=Text>To install a fresh new cluster node, extract OpenRDS package to a
+directory and run either the “<span class=CodeChar>clusterNode.bat</span>” (on
+Windows) or “<span class=CodeChar>clusterNode.sh</span>” (on Linux). Since this
+is the first time that you are executing the cluster node it will start with
+the “Installation wizard”, making some questions to you. The first message that
+will be displayed is:</p>
+
+<p class=Code><b>Please type the IP or host-name of the Main Node:</b></p>
+
+<p class=Text>Here you need to type either the IP address or hostname of the
+machine that will be running the main node. If you are going to run it on the
+same machine, just type “<span class=CodeChar>localhost</span>” (without
+quotes). After that, the following message will be displayed:</p>
+
+<p class=Code><b>Do you want to use the default registry port? (y/n):</b></p>
+
+<p class=Text>Just type “y” or “yes” for this question, unless you have changed
+the default registry port on the main node (which is only needed if you have a
+problem with the default port). The next question is pretty much the same:</p>
+
+<p class=Code><b>Do you want to use the default HTTP port? (y/n):</b></p>
+
+<p class=Text>Just type “y” or “yes” again, unless you have a problem using the
+default port on the main node. Now the system should display:</p>
+
+<p class=Code><b>Do you want to define a base-ip for OpenRDS?</b></p>
+
+<p class=Code><b>(This is only needed if you have more than one IP.) (y/n):</b></p>
+
+<p class=Text>If you have (or plan to have) more than one IP, you should
+probably set a “<span class=CodeChar>base-ip</span>”, because this will be the
+address used by OpenRDS to communicate over the network. If you type “yes”, the
+system will display something like that:</p>
+
+<p class=Code><b>The system has detected the following IPs:</b></p>
+
+<p class=Code><b>127.0.0.1</b></p>
+
+<p class=Code><b>192.168.211.1</b></p>
+
+<p class=Code><b>192.168.112.1</b></p>
+
+<p class=Code><b>192.168.0.205</b></p>
+
+<p class=Code><b>Please enter the desired base ip to use:</b></p>
+
+<p class=Text>As you can see, the system listed all detected addresses and
+requested you to choose one. <b>ATTENTION:</b> You don’t need to enter the full
+desired IP address, just the left-most part that will not cause ambiguity over
+your addresses. This is VERY important if you use dynamic IP (DHCP).</p>
+
+<p class=Text>For the addresses in this example (“127.0.0.1”, “192.168.211.1”,
+“192.168.112.1” and “192.168.0.205”), I could set the “<span class=CodeChar>base-ip</span>”
+to “<span class=CodeChar><b>192.168.0.</b></span>” or “<span class=CodeChar><b>192.168.0</b></span>”
+in order to use the IP “192.168.0.205”. If on the next boot this IP changes to
+“192.168.0.220” the node will still work.</p>
+
+<p class=Text>If you have an IP address that conflicts with the left-most part
+of another IP address (such as “192.168.0.1” and “192.168.0.10”), and you need
+to use the first one, just set the <span class=CodeChar>base-ip</span> to match
+exactly the desired IP address. Note that this is an extremely rare situation.</p>
+
+<p class=Text>After you choose the desired address (or if you typed “no” for
+the last question), the system will display the startup messages, which will
+look like this:</p>
+
+<p class=Code><b>Using network address '192.168.0.205'.</b></p>
+
+<p class=Code><b># OpenRDS 1.1-development (Built on </b><b>September 26 2006</b><b> </b><b>20:41:36</b><b>)</b></p>
+
+<p class=Code><b># During the execution of the node, type any of the following</b></p>
+
+<p class=Code><b># commands and press [ENTER] to execute it.</b></p>
+
+<p class=Code><b>#</b></p>
+
+<p class=Code><b># exit    - Stops the process node execution.</b></p>
+
+<p class=Code><b># quit    - Same as 'exit'.</b></p>
+
+<p class=Code><b># restart - Restarts the process node, unloading any loaded
+code.</b></p>
+
+<p class=Code><b># update  - Checks for online updates (requires internet).</b></p>
+
+<p class=Code><b># config  - Change node's configuration (will cause a
+restart).</b></p>
+
+<p class=Code><b># clear   - Clears the console, by printing 40 '\n' chars.</b></p>
+
+<p class=Code><b># help    - Displays this message again.</b></p>
+
+<p class=Code><b># h       - Same as 'help'.</b></p>
+
+<p class=Code><b>&nbsp;</b></p>
+
+<p class=Code><b>Node has been successfully started - Trying to connect to main
+node.</b></p>
+
+<p class=Text>These messages will always be displayed when you start a cluster
+node. As you can see, the node lists all available commands that you can
+execute, and I think the messages are self-explanatory, so I will not detail
+them here.</p>
+
+<h3><a name="_Toc147743744"></a><a name="_Initialization_scripts"></a>1.7.2<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Initialization
+scripts</h3>
+
+<p class=Text>As you have noted, the cluster node tool is initialized by a
+script file called “<span class=CodeChar>clusterNode.xxx</span>” (where xxx changes
+for each platform).</p>
+
+<p class=Text>On the beginning of each script, there is a section with some
+variables that you can modify as needed. This includes: “Java location”,
+“Additional java arguments”, “Additional JAR libraries”, etc.</p>
+
+<p class=Text>Take a look at the script file, since you may find out something
+that you would like to modify. One important thing to modify if you don’t want
+to use “<a href="#_Dynamic_class_download">Dynamic class download</a>” is the
+“Additional JAR libraries”, which is defined by the variable “<span
+class=CodeChar><b>LIBS</b></span>”. You should list all your application’s JAR
+files on this variable.</p>
+
+<h3><a name="_Toc147743745">1.7.3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Configuration</a></h3>
+
+<p class=Text>When you install a cluster node, a file called “<span
+class=CodeChar>clusternode.properties</span>” will be generated and will store
+all configuration data. You can delete this file and restart the node if you
+want to reconfigure it, but you can also type the command “<span
+class=CodeChar><b>config</b></span>” while the node is running, so that the
+node will do that for you.</p>
+
+<p class=Text>Configuration is not different from the installation procedure,
+so I think you won’t have problems with that.</p>
+
+<h3><a name="_Toc147743746">1.7.4<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Web update</a></h3>
+
+<p class=Text>When a new OpenRDS version is released, you can download the
+package and manually copy the updated JAR file to your cluster nodes. But you
+may find it easier to run the “Web update” feature. To do that, just type the
+command “<span class=CodeChar><b>update</b></span>” on the cluster node console
+and the system will display the following message:</p>
+
+<p class=Code><b>Are you sure you want to check for updates on the web? (y/n):</b></p>
+
+<p class=Text>Just type “yes” and after some time the system will display
+something like:</p>
+
+<p class=Code><b>There is a new version of OpenRDS available: 1.1-beta</b></p>
+
+<p class=Code><b>Do you want to update this node? (Will restart application)
+(y/n):</b></p>
+
+<p class=Text>Or</p>
+
+<p class=Code><b>The version is up to date!</b></p>
+
+<p class=Text>If the system detected a new version, just type “yes” and it will
+download and install the latest version (restarting the node); otherwise it
+means that you already have the latest version.</p>
+
+<h1><a name="_Toc147743747">2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>OpenRDS in action</a></h1>
+
+<p class=Text>This chapter works on several important aspects of OpenRDS that will
+be surely useful for developers using the framework. This is a must-read for
+anyone starting to use OpenRDS or wanting to understand it better before taking
+the decision of using it.</p>
+
+<h2><a name="_Toc147743748"></a><a name="_Working_with_clock"></a>2.1<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Working with clock and memory factors</h2>
+
+<p class=Text>All the examples previously seen in this guide demonstrates how
+to use OpenRDS to distribute requisitions, but how are those requisitions
+balanced over the nodes? Well, to explain this you need firstly to understand
+the usage of clock and memory factors, which are applicable for nodes and
+requisitions.</p>
+
+<h3><a name="_Toc147743749">2.1.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Node factors</a></h3>
+
+<p class=Text>All process nodes MUST define a processing factor (also called
+“clock factor”) and a memory factor. These factors determine the processing
+power and the memory allocation capacity of that node. Main nodes do not define
+those factors.</p>
+
+<p class=Text>By default, OpenRDS will set the clock factor to the same value
+of the processor clock in MHz (E.g.: 2400 for a 2.4GHz processor) and the
+memory factor to the amount of physical memory of the machine in MB. But these
+factors can be overridden by setting two java system-properties: “<span
+class=CodeChar><b>openrds.clock.amount</b></span>” and “<span class=CodeChar><b>openrds.memory.amount</b></span>”
+(which sets the clock and memory factors respectively).</p>
+
+<p class=Text>These two factors are used by OpenRDS to determine the best node
+to process a requisition. I won’t describe in details the algorithm used to
+balance the requisitions, but you will better understand how to use those
+factors and why they are necessary after reading the next topic, “Requisition
+factors”.</p>
+
+<h3><a name="_Toc147743750">2.1.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Requisition factors</a></h3>
+
+<p class=Text>Any requisition can define a processing factor and/or a memory
+factor, which are used by OpenRDS to determine how “heavy” that requisition is
+in terms of processor time usage and memory consumption. To determine the
+processing and/or memory factor(s) of a requisition, override the following
+method(s) of an indivisible requisition:</p>
+
+<p class=Code><b>public int getProcessingFactor();</b></p>
+
+<p class=Code><b>public int getMemoryFactor();</b></p>
+
+<p class=Text>The first one defines the processing factor (or clock factor) of
+the requisition, and the second one defines its memory factor.</p>
+
+<p class=Text>OpenRDS will keep track of requisitions being processed on all
+nodes. If the sum of clock factors of all requisitions being processed on a
+node matches or exceeds the clock factor of that same node, it will be marked
+as “processing unavailable” and will not receive any other requisition that
+defines a clock factor. The node will remain in that state until it finishes
+processing a requisition that define a clock factor (and will then be “processing
+available” again).</p>
+
+<p class=Text>The same rule is applied to memory factors; it will be marked as
+“memory unavailable” and will not receive requisitions that define the memory
+factor. Please note that if a node is marked as “memory unavailable” it can
+still receive requisitions that do not define any factor or define just the
+clock factor (the same applies to “processing unavailable”).</p>
+
+<p class=Text>This characteristic of OpenRDS makes it possible for the system
+to distinguish “heavy” requisitions from “light” requisitions as well as
+different characteristics of memory consumption and processor time usage. You
+can, for example, model your nodes to be able to process two light requisitions
+at the same time, but not two heavy ones.</p>
+
+<p class=Text>To illustrate these rules, here follows an example: Consider you
+have a node called “A”, with clock factor equals to 1000 and a memory factor
+equals to 512, so:</p>
+
+<p class=Text><span class=CodeChar><b>NODE A – CF: 1000, MF: 512</b></span> (CF
+stands for Clock factor and MF stands for memory factor)</p>
+
+<p class=Text>Then this node receives a requisition that defines just a memory
+factor of 400:</p>
+
+<p class=Code><b>START REQ#1 – CF: 0, MF: 400</b></p>
+
+<p class=Text>(Starts to process requisition #1, with CF=0 and MF=400).</p>
+
+<p class=Text>While this requisition was still being processed, the node
+receives another requisition, which defines just a memory factor of 200:</p>
+
+<p class=Code><b>START REQ#2 – CF: 0, MF: 200 ** Unavailable: memory **</b></p>
+
+<p class=Text>(Starts to process requisition #2 and marks memory as
+unavailable)</p>
+
+<p class=Text>Since the sum of memory factors of all requisitions have exceeded
+the node’s memory factor, it has been marked as “memory unavailable” (400+200=600)
+and (600 &gt;= 512).</p>
+
+<p class=Text>Now, the node receives another requisition:</p>
+
+<p class=Code><b>START REQ#3 – CF: 400, MF: 0</b></p>
+
+<p class=Text>(This is ok, since this requisition does not define a memory
+factor, just a processing factor).</p>
+
+<p class=Text>And this node now finally finishes processing the first
+requisition:</p>
+
+<p class=Code><b>END REQ#1 ** Available: memory **</b></p>
+
+<p class=Text>Since the node has finished a requisition that defines a memory
+factor, it is now marked as “memory available” and will be able to receive
+requisitions that define this factor again.</p>
+
+<p class=Text>Here follows a sample activity for a node, which will be illustrated
+just like in the last example:</p>
+
+<p class=Code><b>(NODE B – CF: 1000, MF: 512)</b></p>
+
+<p class=Code><b>START REQ#1 – CF: 0, MF: 400</b></p>
+
+<p class=Code><b>START REQ#2 – CF: 0, MF: 200 ** Unavailable: memory **</b></p>
+
+<p class=Code><b>END REQ#1 ** Available: memory **</b></p>
+
+<p class=Code><b>END REQ#2 (node idle)</b></p>
+
+<p class=Code><b>START REQ#3 – CF: 500, MF: 0</b></p>
+
+<p class=Code><b>START REQ#4 – CF: 499, MF: 0</b></p>
+
+<p class=Code><b>START REQ#5 – CF: 1, MF: 0 ** Unavailable: processing **</b></p>
+
+<p class=Code><b>START REQ#6 – CF: 0, MF: 400</b></p>
+
+<p class=Code><b>END REQ#5 ** Available: processing **</b></p>
+
+<p class=Code><b>START REQ#7 – CF: 0, MF: 112 ** Unavailable: memory **</b></p>
+
+<p class=Code><b>END REQ#4</b></p>
+
+<p class=Code><b>END REQ#3</b></p>
+
+<p class=Code><b>START REQ#5 – CF: 1500, MF: 0 ** Unavailable: processing **</b></p>
+
+<p class=Text>I hope that this small example could give you a good idea of how
+factors are used to determine if a node can process a requisition or not. Also,
+as you can now realize by yourself, if you want to limit a single requisition
+to be processed at a time on all nodes you can set any of the requisition’s
+factor to a very high number, such as 99999. And if you want, for any reason, to
+limit the number of requisitions on a single node, just set a very low factor
+on that node (such as 1), and define that same factor on you requisitions to
+any desired value (greater than zero).</p>
+
+<p class=Text>&nbsp;</p>
+
+<h2><a name="_Toc147743751">2.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Dealing with common issues</a></h2>
+
+<p class=Text>This topic works the overall idea of some basic but necessary
+concepts that a developer will need before starting to construct real
+applications using OpenRDS.</p>
+
+<h3><a name="_Toc147743752"></a><a name="_Class_loading"></a>2.2.1<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Class
+loading</h3>
+
+<p class=Text>One of the most important things that a developer must understand
+is how to deal with the Java class loading mechanism when using OpenRDS. If you
+understand it well, it will surely help you to avoid a large number of common
+mistakes.</p>
+
+<p class=Text>The java runtime environment always loads a class when it is used
+or referenced for the first time on that JVM. Every class that a requisition
+references directly or indirectly will follow the same rule, with the very
+difference that you can never predict on which JVM that requisition will be
+running. As a result of that, a requisition cannot assume that something has
+been previously loaded and/or executed on that JVM in order for it to work
+properly.</p>
+
+<p class=Text>If you executed some initialization code that created some
+objects or any other sort of data, those objects will not be available on the
+process node’s JVM. If you really depend on any sort of initialization you
+should create a static flag to tell your requisitions if the initialization has
+already been performed or not on the current JVM. Every requisition should then
+check this flag and execute the initialization if necessary and update the flag
+on the end.</p>
+
+<p class=Text>The following code is a small example of how to perform initialization
+on requisitions:</p>
+
+<p class=Code align=center style='text-align:center'><img width=593 height=257
+src="userguide_files/image005.gif" alt="Code&#13;&#10;&#13;&#10;"></p>
+
+<h3><a name="_Toc147743753">2.2.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Static initialization</a></h3>
+
+<p class=Text>Another thing that complements what we have learned about class
+loading is the classes’ static initialization.</p>
+
+<p class=Text>Static initialization is executed by the JRE when any class is
+loaded for the first time and includes anything that is directly assigned to a
+static variable in the field declaration and code contained in “<span
+class=CodeChar><b>static { }</b></span>” blocks, as in the example:</p>
+
+<p class=Code align=center style='text-align:center'><img width=593 height=123
+src="userguide_files/image006.gif" alt="Code&#13;&#10;&#13;&#10;"></p>
+
+<p class=Text>On this example, the methods “<span class=CodeChar><b>determineValue()</b></span>”,
+“<span class=CodeChar><b>someMethod()</b></span>”, and the constructor “<span
+class=CodeChar><b>SomeObject()</b></span>” will all be executed when the class
+“<span class=CodeChar><b>MyClass</b></span>” is loaded for the first time for
+any reason.</p>
+
+<p class=Text>An important thing to notice is that if the main node is running
+on a separated process of your application, some static initialization may be
+executed on the main node while it is loading a requisition to send it to a
+process node.</p>
+
+<h3><a name="_Toc147743754">2.2.3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Singletons</a></h3>
+
+<p class=Text>The “singleton” design pattern is used on many java systems to
+make a single object reference globally accessible all over the JVM. If your
+requisition is going to access any singleton object, you should take the same
+precautions as described on the <a href="#_Class_loading">[Class loading]</a>
+topic.</p>
+
+<h3><a name="_Toc147743755">2.2.4<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Threads</a></h3>
+
+<p class=Text>If you need, for any reason, to start a thread from your
+requisition, make sure that this thread is terminated when the requisition
+finishes its job, otherwise you may have serious memory leaks when running your
+nodes for a long time.</p>
+
+<p class=Text>You may also choose to start a thread for any purpose and keep it
+running on the process node’s JVM when the requisition completes, but you
+should then be sure to don’t start that same thread again when another
+requisition comes to be processed in that process node. Again, you can use
+static flags and other techniques to do that.</p>
+
+<h3><a name="_Toc147743756">2.2.5<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Data access</a></h3>
+
+<p class=Text>Any data that the requisition will need must come serialized with
+the requisition itself since you will not have access to any other kind of
+data. As this data is transferred over the network, make sure that you are
+referencing only the necessary amount of data in the requisition or you may
+have performance problems because of the time necessary to transfer the data.</p>
+
+<p class=Text>If you need to access a large amount data, see the topic <a
+href="#_Working_with_databases">[Working with databases]</a>.</p>
+
+<h3><a name="_Toc147743757">2.2.6<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Host operating system</a></h3>
+
+<p class=Text>If you have process nodes running on multiple operating systems,
+just be sure to don’t call any OS-specific API. This is not a big problem on
+Java applications, but this topic serves only to remind you about this issue. A
+good option is to check the current OS on the requisition code before calling
+this kind of APIs.</p>
+
+<h3><a name="_Toc147743758">2.2.7<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>JNI</a></h3>
+
+<p class=Text>To use JNI with OpenRDS, you just need to be sure that your JNI
+library is available on the process node’s library path. The “cluster node
+tool” always put the current working directory in the java library path, so all
+libraries can be put on the same directory of <span class=CodeChar>OpenRDS.jar</span>.</p>
+
+<p class=Text>Also, make sure that the “<span class=CodeChar><b>System.loadLibrary()</b></span>”
+method has been executed on the current process node before calling any JNI, as
+we have previously seen about class loading on previous sub-topics.</p>
+
+<h3><a name="_Toc147743759">2.2.8<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Inner classes</a></h3>
+
+<p class=Text>Remember that all non-static inner classes implicitly holds a
+reference to the object that instantiated it (this includes anonymous inner
+classes). So be very careful when passing this kind of object to a requisition.</p>
+
+<p class=Text>Also, if you implement a requisition as an inner class, be sure
+that the requisition class is declared as “static”, otherwise every time you
+process a requisition, the object that instantiated that requisition will also
+be transferred over the network if it implements “<span class=CodeChar>Serializable</span>”,
+what can give you a big performance bottleneck.</p>
+
+<p class=Text>The following example demonstrates what you can and what you can’t
+do:</p>
+
+<p class=Code align=center style='text-align:center'><img width=593 height=533
+src="userguide_files/image007.gif" alt="Code&#13;&#10;&#13;&#10;"></p>
+
+<p class=Text>&nbsp;</p>
+
+<h2><a name="_Toc147743760"></a><a name="_Dynamic_class_download"></a>2.3<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Dynamic class download</h2>
+
+<p class=Text>One of the best features of OpenRDS is the transparent dynamic
+class download. This feature allows you to transparently transfer java
+executable code over the network to the process nodes.</p>
+
+<p class=Text>With dynamic class download, your process nodes don’t need to
+have the code for your requisitions (your JAR file for example); what makes it
+easier to manage the system.</p>
+
+<h3><a name="_Toc147743761">2.3.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Understanding how it works</a></h3>
+
+<p class=Text>Every time that a node needs to load any class but it could not
+be found in the local class-path, OpenRDS will try to transparently download
+that class from the main node and load it into the node’s JVM. This includes
+any class directly or indirectly referenced by a requisition received by the
+node.</p>
+
+<p class=Text>Once a class is downloaded, it will remain in that node’s memory
+and it will not be downloaded anymore while that node keeps running. If you
+restart the node, the JVM will not contain downloaded classes anymore and the
+node will be start to download those classes again the next time it needs them.</p>
+
+<h3><a name="_Toc147743762">2.3.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Advantages and disadvantages</a></h3>
+
+<p class=Text>The main advantage of using dynamic class download is to make it
+easier to manage versions. If you update your software version (not OpenRDS
+version), you just have to restart the process nodes and they will
+automatically load the new classes, removing the necessity of updating each
+process node individually.</p>
+
+<p class=Text>Using dynamic class download also decreases the necessary time to
+install a new process node in your network, since you just have to turn it on
+and it will start to work perfectly with your requisitions.</p>
+
+<p class=Text>In the other hand, using dynamic class download will reduce the
+performance for the first requisition that a process node executes, since it
+will have to download all the necessary classes, which can take some precious
+time depending on the amount of classes necessary and your network speed.</p>
+
+<p class=Text>You should analyze your particular situation to decide if you
+need or not to use dynamic class downloads. If you choose not to use it, the
+process node will need to have your application’s JAR file in the class-path,
+so that it will not download any classes from the main node. If you are using
+the “cluster node tool”, see the sub-topic <a href="#_Initialization_scripts">[Initialization
+scripts]</a> for information on how to do that.</p>
+
+<p class=Text>Also, if you want to completely disable remote class downloads,
+just set the http port to <span class=CodeChar><b>-1</b></span> when starting
+your main node and process nodes. If you set the http port to -1 just on the
+main node, it will not respond to download requests, but the process nodes will
+still attempt to download a class when it is not found on the its class-path,
+what can result on a performance bottleneck.</p>
+
+<h2><a name="_Toc147743763"></a><a name="_Working_with_databases"></a>2.4<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Working with databases</h2>
+
+<p class=Text>This topic explains how to use OpenRDS with databases and gives
+some examples of how to do that.</p>
+
+<h3><a name="_Toc147743764">2.4.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Overview</a></h3>
+
+<p class=Text>There are many situations where sending data with the requisition
+is not suitable for an application. A solution for this problem could be to get
+the necessary data from inside a requisition, by using a database connection.</p>
+
+<p class=Text>Database connections may also be useful for other situations,
+such as when your requisition needs to manipulate any data which is not
+possible for the requestor to predict. An example of that is when you need to
+manipulate two groups of data and the second group will be chosen based on the
+result of the first manipulation.</p>
+
+<p class=Text>OpenRDS fully supports database connections, even using dynamic
+class download, since the JDBC driver classes will be downloaded as any other
+normal system class to the process node’s JVM.</p>
+
+<h3><a name="_Toc147743765">2.4.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Connecting to a database</a></h3>
+
+<p class=Text>When creating database connections, we need to take the same
+precautions described in the sub-topic <a href="#_Class_loading">[Class
+loading]</a>, so just use one of the described techniques to create a database
+connection normally. Here follows a simple code example of how to create a
+requisition that reads data from a database:</p>
+
+<p class=Code align=center style='text-align:center'><img width=593 height=413
+src="userguide_files/image008.gif" alt="Code&#13;&#10;&#13;&#10;"></p>
+
+<h1><a name="_Toc147743766">3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Getting and using the source-code</a></h1>
+
+<p class=Text>This chapter explains how to download and use the full
+source-code of OpenRDS.</p>
+
+<h2><a name="_Toc147743767">3.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Downloading the full source</a></h2>
+
+<p class=Text>When you download a release package of OpenRDS, it comes with a
+pre-packaged version of the source-code. But the source included on this
+package is only the main java source of the library to help on debugging and
+some other things, such as integrating the source-code on an IDE that supports
+this feature.</p>
+
+<p class=Text>To download the full source-code structure, you will need a CVS client.
+See <a href="http://www.nongnu.org/cvs/">http://www.nongnu.org/cvs/</a> for
+more information about CVS.</p>
+
+<p class=Text>Now connect to the following CVS repository:</p>
+
+<p class=Code><tt><b>:pserver:anonymous@openrds.cvs.sourceforge.net:/cvsroot/openrds</b></tt></p>
+
+<p class=Text>(This is a read-only anonymous login, which does not require a
+password).</p>
+
+<p class=Text>Now, just checkout the module “<span class=CodeChar><b>openrds</b></span>”
+to some local directory, and you are ready to use the full source-code.</p>
+
+<p class=Text>If you have any problem downloading the source, or need more
+information, see the page <a href="http://sourceforge.net/cvs/?group_id=133866">http://sourceforge.net/cvs/?group_id=133866</a>.</p>
+
+<p class=Text>OpenRDS is developed using the Eclipse Platform (<a
+href="http://eclipse.org/">http://eclipse.org</a>), so it can be checked out
+directly as an eclipse project if desired.</p>
+
+<h2><a name="_Toc147743768">3.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Compiling OpenRDS</a></h2>
+
+<p class=Text>If you have “<span class=CodeChar><b>ant</b></span>” (<a
+href="http://ant.apache.org/">http://ant.apache.org</a>), just execute the “<span
+class=CodeChar><b>build.xml</b></span>” file located on the “<span
+class=CodeChar><b>/build</b></span>” folder of the module and it will generate
+two jar files in the “<span class=CodeChar><b>/build/jar</b></span>” directory
+of the module, one with debug information and one optimized.</p>
+
+<p class=Text>If you don’t have ant, open a console, change to the folder “<span
+class=CodeChar><b>/src</b></span>” of the downloaded module, then type the
+following commands:</p>
+
+<p class=Code><b>javac -d ../bin net/sf/openrds/*.java</b></p>
+
+<p class=Code><b>javac -d ../bin net/sf/openrds/examples/*.java</b></p>
+
+<p class=Code><b>javac -d ../bin net/sf/openrds/tools/*.java</b></p>
+
+<p class=Code><b>cd ..</b></p>
+
+<p class=Code><b>cd bin</b></p>
+
+<p class=Code><b>rmic -classpath ./ net.sf.openrds.Node</b></p>
+
+<p class=Code><b>rmic -classpath ./ net.sf.openrds.MainNode</b></p>
+
+<p class=Code><b>rmic -classpath ./ net.sf.openrds.ProcessNode</b></p>
+
+<p class=Code><b>rmic -classpath ./ net.sf.openrds.LocalRegistryHandler</b></p>
+
+<p class=Code><b>rmic -classpath ./ net.sf.openrds.RemoteRegistryHandler</b></p>
+
+<p class=Text>After running these commands, the full source will have been
+compiled to the folder “<span class=CodeChar><b>/bin</b></span>” of the module.
+Now just package it using the “<span class=CodeChar>jar</span>” application and
+you are ready to use it.</p>
+
+<h2><a name="_Toc147743769">3.3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Compiling JNI code</a></h2>
+
+<p class=Text>At the current version, OpenRDS just uses JNI on the Windows
+operation system. You can find the JNI code under the folder “<span
+class=CodeChar><b>/jni</b></span>” of the module.</p>
+
+<p class=Text>To compile the source, you just need to open the “<span
+class=CodeChar><b>.dsw</b></span>” workspace file in the Microsoft Visual
+Studio 6 or greater and run the “build” command.</p>
+
+<h2><a name="_Toc147743770">3.4<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Running the tests</a></h2>
+
+<p class=Text>If you have “<span class=CodeChar><b>ant</b></span>” (<a
+href="http://ant.apache.org/">http://ant.apache.org</a>), just execute the “<span
+class=CodeChar><b>junit</b></span>” target of the “<span class=CodeChar><b>build.xml</b></span>”
+file located on the “<span class=CodeChar><b>/build</b></span>” folder, to do that,
+just type “<span class=CodeChar><b>ant junit</b></span>” on that folder. Please
+note that you need to add the <span class=CodeChar><b>junit.jar</b></span> file
+on ant’s class-path.</p>
+
+<p class=Text>If you don’t have ant, you need to manually compile the source as
+previously described and then compile the classes contained on “<span
+class=CodeChar><b>/junits/net/sf/openrds/</b></span>” and run the “<span
+class=CodeChar>junit</span>” class “<span class=CodeChar><b>net.sf.openrds.AllTests</b></span>”.</p>
+
+<p class=Text>For more information, look at <a href="http://www.junit.org/">http://www.junit.org/</a>.</p>
+
+<p class=Text>&nbsp;</p>
+
+<p class=Text>&nbsp;</p>
+
+<h1><a name="_Toc147743771">4<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>About</a></h1>
+
+<h2><a name="_Toc147743772">4.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>How did the project start?</a></h2>
+
+<p class=Text>OpenRDS started as my monograph’s practical project for achieving
+the Bachelor of Computer Science grade in the Brazilian university where I
+graduated, on December of 2005.</p>
+
+<p class=Text>When I finished the initial version of the project, it remained
+inactive for about 6 months, but I then realized that it could be useful for me
+and even other people looking for an extremely simple way of making distributed
+systems, so I decided to continue constantly improving the project.</p>
+
+<h2><a name="_Toc147743773">4.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Who maintains OpenRDS project?</a></h2>
+
+<p class=Text>OpenRDS is maintained only by Rodrigo Zechin Rosauro, a Brazilian
+born on August of 1984, currently working as a Java Developer.</p>
+
+<h2><a name="_Toc147743774">4.3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>How can I contribute?</a></h2>
+
+<p class=Text>If you like the framework, you can contribute by sending
+suggestions and bugs reports using the tracker located on <a
+href="http://sourceforge.net/tracker/?group_id=133866">http://sourceforge.net/tracker/?group_id=133866</a>.</p>
+
+<p class=Text style='text-indent:0in'>&nbsp;</p>
+
+</div>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-1508304-1";
+urchinTracker();
+</script>
+
+</body>
+
+</html>
